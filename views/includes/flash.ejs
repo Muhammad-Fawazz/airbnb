@@ -1,0 +1,15 @@
+<!-- Flash Message (Centered horizontally) -->
+<% if (success && success.length > 0) { %>
+    <div class="alert alert-success alert-dismissible fade show text-center mx-auto" role="alert" style="max-width: 400px;">
+        <strong><%= success %></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <% } %>
+
+    <% if (error && error.length > 0) { %>
+    <div class="alert alert-danger alert-dismissible fade show text-center mx-auto" role="alert" style="max-width: 400px;">
+        <strong><%= error %></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <% } %>
+    
