@@ -8,7 +8,6 @@ const userController = require("../controllers/users.js");
 // Index Route
 router.get("/", userController.index);
 
-
 router.get("/signup", userController.signupForm);
 
 router.post("/signup", userController.signup);

@@ -5,7 +5,7 @@ const reviewController = require("../controllers/reviews.js");
 
 router.post(
     "/",
-    validateReview,
+    // validateReview,
     isLoggedIn,
     reviewController.createReview
 );
