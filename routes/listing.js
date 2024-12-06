@@ -1,8 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const Listing = require("../models/listing.js");
 const { isLoggedIn, isOwner, validateListing } = require("../middleware.js");
+const multer = require("multer");
+const { storage } = require("../cloudConfig.js");
+const upload = multer( { storage } );
 const {
+    index,
     renderNewForm,
     showListing,
     createListing,
@@ -11,42 +14,35 @@ const {
     destroyListing,
 } = require("../controllers/listings");
 
-router.get("/", async (req, res) => {
-    const allListings = await Listing.find({});
-    res.render("listings/index.ejs", { allListings });
-});
+router.route("/")
+.get(index)
+.post(
+    isLoggedIn,
+    upload.single("listing[image]"),
+    validateListing,
+    createListing,
+)
 
-// New Route
+
 router.get("/new", isLoggedIn, renderNewForm);
 
-// Show Route
-router.get("/:id", showListing);
 
-// Create Route
-router.post("/",
-    isLoggedIn,
-    validateListing,
-    createListing);
+router.route("/:id")
+    .get(showListing)
+    .put(
+        isLoggedIn,
+        validateListing,
+        isOwner,
+        updateListing)
+    .delete(
+        isLoggedIn,
+        isOwner,
+        destroyListing);
 
-// Edit Route
+
 router.get("/:id/edit",
     isLoggedIn,
     isOwner,
     renderEditForm);
-
-// Update Route
-router.put("/:id",
-    isLoggedIn,
-    validateListing,
-    isOwner,
-    updateListing);
-
-// Delete Route
-router.delete("/:id",
-    isLoggedIn,
-    isOwner,
-    destroyListing);
-
-
 
 module.exports = router;

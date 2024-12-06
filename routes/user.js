@@ -8,18 +8,20 @@ const userController = require("../controllers/users.js");
 // Index Route
 router.get("/", userController.index);
 
-router.get("/signup", userController.signupForm);
+router.route("/signup")
+    .get(userController.signupForm)
+    .post(userController.signup);
 
-router.post("/signup", userController.signup);
-
-router.get("/login", userController.loginForm);
-
-router.post("/login",
+router.route("/login")
+    .get(userController.loginForm)
+    .post(
     saveRedirectUrl,
     passport.authenticate("local", {
         failureRedirect: "/login",
         failureFlash: true,
-    }), userController.login);
+    }), 
+    userController.login
+);
 
 router.get("/logout", userController.logout );
 
