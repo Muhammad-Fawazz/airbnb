@@ -106,3 +106,8 @@ body {
 .show-card {
     padding: 0;
 }
+
+#map { 
+    height: 350px;
+    width: 100vh;
+}

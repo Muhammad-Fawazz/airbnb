@@ -1,4 +1,4 @@
- const Listing = require("../models/listing.js");
+const Listing = require("../models/listing.js");
 const wrapAsync = require("../utils/wrapAsync");
 const User = require("../models/user");
 

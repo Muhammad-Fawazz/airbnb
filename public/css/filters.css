@@ -1,0 +1,70 @@
+/* Main container for scrollable icons */
+ 
+.scroll-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 10px 0;
+    justify-content: center;
+  }
+  
+  .scroll-content {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-behavior: smooth; 
+    padding: 10px 0;
+    width: 100%;
+  }
+  
+  .scroll-content::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scroll-content {
+    -ms-overflow-style: none; 
+    scrollbar-width: none;    
+  }
+  
+ 
+  .category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+    cursor: pointer;
+    color: #717171;
+    transition: color 0.3s;
+  }
+  
+  .category-item:hover {
+    color: black;
+  }
+  
+  .category-item i {
+    font-size: 24px;
+    margin-bottom: 5px;
+  }
+  
+  .category-item span {
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  
+  .tax-info {
+    display: none;
+  }
+  
+  .tax-toggle {
+  
+    border: 1px solid rgba(0, 0, 0, 0.204);
+    border-radius: 1rem;
+    padding: 15px; 
+   }
+  
+  .tax-toggle label {
+    margin: 0 1rem;
+  }

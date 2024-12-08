@@ -31,8 +31,9 @@ router.route("/:id")
     .get(showListing)
     .put(
         isLoggedIn,
-        validateListing,
         isOwner,
+        upload.single("listing[image]"),
+        validateListing,
         updateListing)
     .delete(
         isLoggedIn,
