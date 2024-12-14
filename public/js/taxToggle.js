@@ -8,5 +8,4 @@ taxSwitch.addEventListener("click", () => {
       info.style.display = "none";
     }
   }
-
 });
