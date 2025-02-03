@@ -41,14 +41,14 @@ app.listen(3000, () => {
 const store = MongoStore.create({
     mongoUrl: dbUrl,
     crypto: {
-        secret: process.env.secret,
+        secret: process.env.SECRET,
     },
     touchAfter: 24*3600,
 });
 
 const sessionOptions = {
     store,
-    secret: process.env.secret,
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
